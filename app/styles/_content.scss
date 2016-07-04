@@ -1,0 +1,21 @@
+body {
+  color: green;
+}
+
+// p.99 - styles for the marketing section
+// this code specifies that the <h4> elements inside the .marketing element should take on the $brand-warning color (which is yellow), and the <p> elements inside the .marketing element should become the $brand-primary color (which is blue)
+.marketing {
+  h4 {
+    a {
+      color: $brand-warning;
+    }
+  }
+  p {
+    color: $brand-primary;
+  }
+}
+
+.container .jumbotron {
+  @include border-top-radius(8px);
+  @include border-bottom-radius(50px);
+}

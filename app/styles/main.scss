@@ -1,13 +1,17 @@
-h1 {
-  color: green;
-  background-color: green;
-}
-
 $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+
+
+// Override Bootstrap variables
+@import "variables";  // p.93 - import "_variables.scss" file
+                      // setting up imports. in order to properly override variables in the bootstrap, the _variables.scss file must be imported BEFORE the bootstrap.scss file (which is what Bower has done below)
 
 // bower:scss
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
+
+// Site-specific styles
+// Add addiditonal stylesheets below
+@import "content"; // p.93 - import "_content.scss" stylesheet
 
 .browsehappy {
   margin: 0.2em 0;
@@ -19,7 +23,7 @@ $icon-font-path: "../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
 /* Space out content a bit */
 body {
   // background-color: #F8F8FF; /* ghost white */
-  background-color: #FFFAFA; /* snow */
+  // background-color: #FFFAFA; /* snow */
   padding-top: 20px;
   padding-bottom: 20px;
 }

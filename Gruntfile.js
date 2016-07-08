@@ -19,7 +19,7 @@ module.exports = function (grunt) {
 
   // Automatically load required grunt tasks
   require('jit-grunt')(grunt, {
-    useminPrepare: 'grunt-usemin'
+    useminPrepare: 'grunt-usemin',
     buildcontrol: 'grunt-build-control'   // this line lets Grunt know that the
                                           // buildcontrol task uses the grunt-build-control module - p.138
   });

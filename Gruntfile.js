@@ -8,7 +8,11 @@
 // If you want to recursively match all subfolders, use:
 // 'test/spec/**/*.js'
 
+// Grunt Configuration starts here - p.130
 module.exports = function (grunt) {
+
+  // require statements are right below the modlue.exports line
+  // these lines are telling Grunt that we are also using other Node.js modules
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
@@ -16,6 +20,8 @@ module.exports = function (grunt) {
   // Automatically load required grunt tasks
   require('jit-grunt')(grunt, {
     useminPrepare: 'grunt-usemin'
+    buildcontrol: 'grunt-build-control'   // this line lets Grunt know that the
+                                          // buildcontrol task uses the grunt-build-control module - p.138
   });
 
   // Configurable paths
@@ -24,11 +30,29 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  // grunt.config() method - this is the beginning of how we configure our Grunt tasks - p.131
   // Define the configuration for all the tasks
   grunt.initConfig({
+  // all of the rest of this file exists within this grunt.config() call. What follows is a massive JSON object defining all the settings for the different tasks we are using in our project. You can see the differetn commands we run on the command line, and how they are configured. - p.132
 
     // Project settings
     config: config,
+
+    // buildcontrol task configuration - p.140-141
+    buildcontrol: {
+      options: {
+        dir: 'dist',
+        commit: true,
+        push: true,
+        message: 'Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%'
+      },
+      pages: {
+        options: {
+          remote: 'git@github.com:rfelixg/wats4000-dev-environment.git',
+          branch: 'gh-pages'
+        }
+      }
+    },
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
@@ -129,6 +153,7 @@ module.exports = function (grunt) {
       ]
     },
 
+    // p.133
     // Mocha testing framework configuration options
     mocha: {
       all: {
